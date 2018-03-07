@@ -1,0 +1,9 @@
+[package]
+name = "typed_rwlock"
+version = "0.1.0"
+authors = ["Leo Schwarz <mail@leoschwarz.com>"]
+license = "Apache-2.0"
+description = "Simplified RwLock interface."
+
+[dependencies]
+parking_lot = "0.5.4"
