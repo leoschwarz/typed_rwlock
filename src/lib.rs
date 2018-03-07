@@ -18,6 +18,7 @@ pub struct RwLockReader<T> {
     inner: Arc<RwLockInner<T>>,
 }
 
+#[derive(Clone)]
 pub struct RwLockWriter<T> {
     inner: Arc<RwLockInner<T>>,
 }
@@ -29,9 +30,7 @@ pub fn new<T>(value: T) -> (RwLockReader<T>, RwLockWriter<T>) {
     let reader = RwLockReader {
         inner: Arc::clone(&inner),
     };
-    let writer = RwLockWriter {
-        inner: inner,
-    };
+    let writer = RwLockWriter { inner: inner };
     (reader, writer)
 }
 
