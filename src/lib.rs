@@ -57,6 +57,16 @@ impl<T> RwLockWriter<T> {
         self.inner.lock.try_write()
     }
 
+    #[inline]
+    pub fn read(&self) -> RwLockReadGuard<T> {
+        self.inner.lock.read()
+    }
+
+    #[inline]
+    pub fn try_read(&self) -> Option<RwLockReadGuard<T>> {
+        self.inner.lock.try_read()
+    }
+
     /// Convert this writer into a reader.
     ///
     /// The conversion is only allowed in this direction.
