@@ -56,4 +56,13 @@ impl<T> RwLockWriter<T> {
     pub fn try_write(&self) -> Option<RwLockWriteGuard<T>> {
         self.inner.lock.try_write()
     }
+
+    /// Convert this writer into a reader.
+    ///
+    /// The conversion is only allowed in this direction.
+    pub fn to_reader(&self) -> RwLockReader<T> {
+        RwLockReader {
+            inner: Arc::clone(&self.inner),
+        }
+    }
 }
